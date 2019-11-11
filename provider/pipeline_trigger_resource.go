@@ -39,12 +39,12 @@ func pipelineTriggerResource() *schema.Resource {
 			"job": &schema.Schema{
 				Type:        schema.TypeString,
 				Description: "Name of the job",
-				Required:    true,
+				Optional:    true,
 			},
 			"master": &schema.Schema{
 				Type:        schema.TypeString,
 				Description: "Name of the job master",
-				Required:    true,
+				Optional:    true,
 			},
 			"property_file": &schema.Schema{
 				Type:        schema.TypeString,
@@ -55,6 +55,32 @@ func pipelineTriggerResource() *schema.Resource {
 				Type:        schema.TypeString,
 				Description: "Type of trigger (jenkins, etc)",
 				Required:    true,
+			},
+			// Docker fields
+			"account": &schema.Schema{
+				Type:        schema.TypeString,
+				Description: "The docker account name",
+				Optional:    true,
+			},
+			"name": &schema.Schema{
+				Type:        schema.TypeString,
+				Description: "Docker Trigger name",
+				Optional:    true,
+			},
+			"organization": &schema.Schema{
+				Type:        schema.TypeString,
+				Description: "Docker organization",
+				Optional:    true,
+			},
+			"registry": &schema.Schema{
+				Type:        schema.TypeString,
+				Description: "Docker registry",
+				Optional:    true,
+			},
+			"repository": &schema.Schema{
+				Type:        schema.TypeString,
+				Description: "Docker repository",
+				Optional:    true,
 			},
 		},
 	}

@@ -14,6 +14,11 @@ type trigger struct {
 	PropertyFile string `mapstructure:"property_file"`
 	RunAsUser    string `mapstructure:"run_as_user"`
 	Type         string
+	// Docker
+	Account      string
+	Organization string
+	Registry     string
+	Repository   string
 }
 
 func fromClientTrigger(clientTrigger *client.Trigger) *trigger {
@@ -26,17 +31,41 @@ func (t *trigger) setResourceData(d *schema.ResourceData) error {
 	if err != nil {
 		return err
 	}
-	err = d.Set("job", t.Job)
-	if err != nil {
-		return err
-	}
-	err = d.Set("master", t.Master)
-	if err != nil {
-		return err
-	}
-	err = d.Set("property_file", t.PropertyFile)
-	if err != nil {
-		return err
+
+	if t.Type == "jenkins" {
+		err = d.Set("job", t.Job)
+		if err != nil {
+			return err
+		}
+		err = d.Set("master", t.Master)
+		if err != nil {
+			return err
+		}
+		err = d.Set("property_file", t.PropertyFile)
+		if err != nil {
+			return err
+		}
+	} else if t.Type == "docker" {
+		// account      = "docker-hub"
+		// organization = "library"
+		// registry     = "index.docker.io"
+		// repository   = "library/nginx"
+		err = d.Set("account", t.Account)
+		if err != nil {
+			return err
+		}
+		err = d.Set("organization", t.Organization)
+		if err != nil {
+			return err
+		}
+		err = d.Set("registry", t.Registry)
+		if err != nil {
+			return err
+		}
+		err = d.Set("repository", t.Repository)
+		if err != nil {
+			return err
+		}
 	}
 	return d.Set("type", t.Type)
 }

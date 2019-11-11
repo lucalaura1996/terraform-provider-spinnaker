@@ -11,11 +11,15 @@ var ErrTriggerNotFound = errors.New("could not find trigger")
 type Trigger struct {
 	ID           string `json:"id"`
 	Enabled      bool   `json:"enabled"`
-	Job          string `json:"job"`
-	Master       string `json:"master"`
-	PropertyFile string `json:"propertyFile"`
+	Job          string `json:"job,omitempty"`
+	Master       string `json:"master,omitempty"`
+	PropertyFile string `json:"propertyFile,omitempty"`
 	RunAsUser    string `json:"runAsUser,omitempty"`
 	Type         string `json:"type"`
+	Account      string `json:"account,omitempty"`
+	Organization string `json:"organization,omitempty"`
+	Registry     string `json:"registry,omitempty"`
+	Repository   string `json:"repository,omitempty"`
 }
 
 // GetTrigger by ID
@@ -29,8 +33,8 @@ func (p *Pipeline) GetTrigger(triggerID string) (*Trigger, error) {
 }
 
 // AppendTrigger append trigger
-func (pipeline *Pipeline) AppendTrigger(trigger *Trigger) {
-	pipeline.Triggers = append(pipeline.Triggers, trigger)
+func (p *Pipeline) AppendTrigger(trigger *Trigger) {
+	p.Triggers = append(p.Triggers, trigger)
 }
 
 // UpdateTrigger in pipeline
