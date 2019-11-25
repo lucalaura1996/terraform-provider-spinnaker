@@ -167,7 +167,7 @@ func pipelineScaleManifestStageResource() *schema.Resource {
 				Description: "The account name",
 				Required:    true,
 			},
-			"application": &schema.Schema{
+			"app": &schema.Schema{
 				Type:        schema.TypeString,
 				Description: "The application name",
 				Optional:    true,

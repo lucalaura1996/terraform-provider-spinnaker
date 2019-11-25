@@ -30,7 +30,7 @@ type ScaleManifestStage struct {
 	// End BaseStage
 
 	Account        string                 `json:"account"`
-	Application    string                 `json:"app"`
+	App            string                 `json:"app"`
 	CloudProvider  string                 `json:"cloudProvider"`
 	Cluster        string                 `json:"cluster"`
 	Criteria       string                 `json:"criteria"`

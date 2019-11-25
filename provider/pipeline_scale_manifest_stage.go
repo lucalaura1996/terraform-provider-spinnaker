@@ -23,7 +23,7 @@ type scaleManifestStage struct {
 	// End baseStage
 
 	Account        string                 `mapstructure:"account"`
-	Application    string                 `mapstructure:"application"`
+	App            string                 `mapstructure:"app"`
 	CloudProvider  string                 `mapstructure:"cloud_provider"`
 	Cluster        string                 `mapstructure:"cluster"`
 	Criteria       string                 `mapstructure:"criteria"`
@@ -69,7 +69,7 @@ func (s *scaleManifestStage) toClientStage(config *client.Config) (client.Stage,
 	// End baseStage
 
 	cs.Account = s.Account
-	cs.Application = s.Application
+	cs.App = s.App
 	cs.CloudProvider = s.CloudProvider
 	cs.Cluster = s.Cluster
 	cs.Criteria = s.Criteria
@@ -104,7 +104,7 @@ func (s *scaleManifestStage) fromClientStage(cs client.Stage) stage {
 	// end baseStage
 
 	newStage.Account = clientStage.Account
-	newStage.Application = clientStage.Application
+	newStage.App = clientStage.App
 	newStage.CloudProvider = clientStage.CloudProvider
 	newStage.Cluster = clientStage.Cluster
 	newStage.Criteria = clientStage.Criteria
@@ -172,7 +172,7 @@ func (s *scaleManifestStage) SetResourceData(d *schema.ResourceData) error {
 	if err != nil {
 		return err
 	}
-	err = d.Set("application", s.Application)
+	err = d.Set("app", s.App)
 	if err != nil {
 		return err
 	}
