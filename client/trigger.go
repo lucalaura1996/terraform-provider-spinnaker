@@ -16,6 +16,7 @@ type Trigger struct {
 	PropertyFile string `json:"propertyFile"`
 	RunAsUser    string `json:"runAsUser,omitempty"`
 	Type         string `json:"type"`
+	Tag          string `json:tag,omitempty`
 }
 
 // GetTrigger by ID

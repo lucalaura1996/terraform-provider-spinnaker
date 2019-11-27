@@ -56,6 +56,11 @@ func pipelineTriggerResource() *schema.Resource {
 				Description: "Type of trigger (jenkins, etc)",
 				Required:    true,
 			},
+			"tag": &schema.Schema{
+				Type:        schema.TypeString,
+				Description: "Docker tag",
+				Optional:    true,
+			},
 		},
 	}
 }

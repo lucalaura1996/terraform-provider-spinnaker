@@ -14,6 +14,7 @@ type trigger struct {
 	PropertyFile string `mapstructure:"property_file"`
 	RunAsUser    string `mapstructure:"run_as_user"`
 	Type         string
+	Tag          string `mapstructure:"tag"`
 }
 
 func fromClientTrigger(clientTrigger *client.Trigger) *trigger {
@@ -35,6 +36,10 @@ func (t *trigger) setResourceData(d *schema.ResourceData) error {
 		return err
 	}
 	err = d.Set("property_file", t.PropertyFile)
+	if err != nil {
+		return err
+	}
+	err = d.Set("tag", t.Tag)
 	if err != nil {
 		return err
 	}
